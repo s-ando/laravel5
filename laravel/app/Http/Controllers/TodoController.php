@@ -19,7 +19,7 @@ class TodoController extends Controller
     }
 
     public function index(){
-        $ret = $this->todo->getall();
+        $ret = $this->todo->paginate();
         return view('todo.index')->with(compact('ret'));
     }
 

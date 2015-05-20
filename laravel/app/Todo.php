@@ -5,8 +5,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Todo extends Model {
 
-    public function getall(){
-        return \DB::table('todos')->get();
+    protected $perPage = 4;
+
+    public function pagenate(){
+        return \DB::table('todos')->paginate($this->perPage);
     }
 
     public function insert(array $params){
