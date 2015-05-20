@@ -24,7 +24,7 @@ class Todo extends Model {
         ->where('id',$params['id'])->update(['title' => $params['title'],'comment' => $params['comment']]);
     }
 
-    // public funciton delete($id){
-    //     return \DB::table('todo')->
-    // }
+    public function drop($id){
+        return \DB::table('todos')->where('id', $id)->delete();
+    }
 }

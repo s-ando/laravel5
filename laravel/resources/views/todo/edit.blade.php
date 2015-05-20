@@ -10,7 +10,7 @@
         <div>
             <p>コメント</p>
             {!! Form::textarea('comment', $ret->comment, ['required', 'class' => 'form']) !!}
-            {!! Form::input('hidden', 'id', $ret->id) !!}            
+            {!! Form::input('hidden', 'id', $ret->id) !!}
         </div>
         <button type="submit" class="btn">投稿</button>
         {!! Form::close() !!}

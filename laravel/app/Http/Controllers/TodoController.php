@@ -35,7 +35,7 @@ class TodoController extends Controller
 
     public function edit($id){
         $ret = $this->todo->get($id);
-        return view('todo.edit')->with('ret', Todo::get($id));
+        return view('todo.edit')->with('ret', $ret);
     }
 
     public function update(editRequest $request){
@@ -44,7 +44,8 @@ class TodoController extends Controller
         return redirect(route('todo.index'));
     }
 
-    public function delete($id){
-        // $this->todo->
+    public function destroy($id){
+        $this->todo->drop($id);
+        return redirect(route('todo.index'));
     }
 }

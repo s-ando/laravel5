@@ -11,7 +11,7 @@
 |
 */
 Route::get('/', 'TodoController@index');
-Route::get('/delete/{}', 'TodoController@delete');
+Route::get('/delete/{delete}', 'TodoController@delete');
 Route::resource('todo', 'TodoController');
 
 

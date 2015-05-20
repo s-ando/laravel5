@@ -15,19 +15,23 @@
             <th>{{$val->title}}</th>
             <th>{{$val->comment}}</th>
             <th>{!! link_to("todo/{$val->id}/edit", "編集", $attributes = array(), $secure = null) !!}</th>
-            {!! Form::open(['method' => 'DELETE', 'route' => ['todo.destory', $ret->id], 'class' => 'form']) !!}
-            <th>{!! link_to("todo/{$val->id}", "削除", $attributes = array(), $secure = null, onClick="postFunc") !!}</th>
-            {!! Form::input('hidden', 'id', $ret->id, class="post") !!}
+            {!! Form::open(['method' => 'DELETE', 'route' => ['todo.destroy', $val->id], 'name' => 'form'.'_'.$val->id]) !!}
+            <!-- <th>{!! link_to("todo/{$val->id}", "削除", $attributes = array(), $secure = null, ['onClick' => "postFunc(this)"]) !!}</th> -->
+            <th>
+                {!! Form::input('hidden', 'id', $val->id, ['id' => 'post']) !!}
+                <a href="javascript:void(0)", onClick="postFunc('{{ "form"."_".$val->id }}')" >削除</a>
+            </th>
             {!! Form::close() !!}
         </tr>
         @endforeach
     </table>
 </body>
-<script>
-function postFunc(){
+<script type="text/javascript">
+function postFunc(name){
     ret = confirm("削除してよろしいですか？");
     if(ret){
-        document.frm.submit();
+        console.log(name);
+        document.forms[name].submit();
     }
 }
 </script>
